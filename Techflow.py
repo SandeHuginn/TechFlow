@@ -35,26 +35,28 @@ class Sistema:
 
     def cadastrar_usuario(self):
         nome = input("Nome: ")
-        username = input("Usuário: ")
+        usuario = input("Usuário: ")
         senha = input("Senha: ")
 
-        usuario = Usuario(username, senha, nome)
-        self.usuarios.append(usuario)
-
-        print("Usuário cadastrado!")
+        self.usuarios.append(Usuario(usuario, senha, nome))
+        print("Usuário cadastrado com sucesso!")
 
     def login(self):
-        username = input("Usuário: ")
+        usuario = input("Usuário: ")
         senha = input("Senha: ")
 
-        for usuario in self.usuarios:
-            if usuario.username == username and usuario.senha == senha:
-                self.usuario_logado = usuario
-                print(f"Bem-vindo {usuario.nome}")
-                return
+        for u in self.usuarios:
+            if u.username == usuario and u.senha == senha:
+                self.usuario_logado = u
+                print(f"\nBem-vindo, {u.nome}!")
+                return True
 
-        print("Usuário ou senha inválidos.")
+        print("Usuário ou senha incorretos!")
+        return False
 
+    def logout(self):
+        self.usuario_logado = None
+        print("Logout realizado com sucesso!")
 
     # ---------------- CREATE ----------------
 
@@ -118,62 +120,78 @@ class Sistema:
 
         print("Tarefa não encontrada.")
 
-            # ---------------- MENU ----------------
+    # ---------------- MENU LOGIN ----------------
 
-    def menu(self):
+    def menu_login(self):
+
         while True:
 
-            print("\n===== SISTEMA ÁGIL =====")
-            print("1 - Cadastrar usuário")
-            print("2 - Login")
-            print("3 - Criar tarefa")
-            print("4 - Listar tarefas")
-            print("5 - Editar tarefa")
-            print("6 - Excluir tarefa")
+            print("\n===== TECHFLOW =====")
+            print("1 - Login")
+            print("2 - Cadastrar Usuário")
             print("0 - Sair")
 
             opcao = input("Escolha: ")
 
             if opcao == "1":
-                self.cadastrar_usuario()
+
+                if self.login():
+                    self.menu_principal()
 
             elif opcao == "2":
-                self.login()
-
-            elif opcao == "3":
-                if self.usuario_logado:
-                    self.criar_tarefa()
-                else:
-                    print("Faça login primeiro!")
-
-            elif opcao == "4":
-                self.listar_tarefas()
-
-            elif opcao == "5":
-                if self.usuario_logado:
-                    self.editar_tarefa()
-                else:
-                    print("Faça login primeiro!")
-
-            elif opcao == "6":
-                if self.usuario_logado:
-                    self.excluir_tarefa()
-                else:
-                    print("Faça login primeiro!")
+                self.cadastrar_usuario()
 
             elif opcao == "0":
-                print("Encerrando...")
+                print("Sistema encerrado.")
                 break
 
             else:
                 print("Opção inválida!")
 
+    # ---------------- MENU PRINCIPAL ----------------
+
+    def menu_principal(self):
+
+        while self.usuario_logado:
+
+            print("\n===== MENU PRINCIPAL =====")
+            print(f"Usuário: {self.usuario_logado.nome}")
+
+            print("1 - Criar tarefa")
+            print("2 - Listar tarefas")
+            print("3 - Editar tarefa")
+            print("4 - Excluir tarefa")
+            print("5 - Logout")
+
+            opcao = input("Escolha: ")
+
+            if opcao == "1":
+                self.criar_tarefa()
+
+            elif opcao == "2":
+                self.listar_tarefas()
+
+            elif opcao == "3":
+                self.editar_tarefa()
+
+            elif opcao == "4":
+                self.excluir_tarefa()
+
+            elif opcao == "5":
+                self.logout()
+
+            else:
+                print("Opção inválida!")
 
 sistema = Sistema()
 
-# Usuário padrão
+# Usuário administrador padrão
 sistema.usuarios.append(
-    Usuario("admin", "123", "Administrador")
+    Usuario(
+        "admin",
+        "123",
+        "Administrador"
+    )
 )
 
-sistema.menu()
+sistema.menu_login()
