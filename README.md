@@ -10,47 +10,45 @@ O objetivo do projeto é fornecer uma solução simples e eficiente para o geren
 
 Entre os principais objetivos estão:
 
-Organizar e acompanhar tarefas da equipe.
-Controlar o fluxo de trabalho por meio de diferentes status.
-Permitir a priorização de atividades críticas.
-Implementar controle de acesso entre administradores e usuários locais.
-Aplicar testes automatizados para garantir a qualidade do sistema.
-Utilizar Integração Contínua (CI) com GitHub Actions para validação automática do código.
+    - Organizar e acompanhar tarefas da equipe.
+    - Controlar o fluxo de trabalho por meio de diferentes status.
+    - Permitir a priorização de atividades críticas.
+    - Implementar controle de acesso entre administradores e usuários locais.
+    - Aplicar testes automatizados para garantir a qualidade do sistema.
+    - Utilizar Integração Contínua (CI) com GitHub Actions para validação automática do código.
 
 # Funcionalidades
 
 ## Usuários
-Cadastro de usuários.
-Login e logout.
-Controle de acesso por perfil:
-    Administrador
-    Usuário Local
+    -Cadastro de usuários.
+    -Login e logout.
+    -Controle de acesso por perfil:
+        -Administrador
+        -Usuário Local
 
 ## Tarefas
-Criar tarefas.
-Listar tarefas.
-Editar tarefas.
-Excluir tarefas (apenas administradores).
-Definir prioridade:
-    Baixa
-    Média
-    Alta
-    Crítica
+    -Criar tarefas.
+    -Listar tarefas.
+    -Editar tarefas.
+    -Excluir tarefas (apenas administradores).
+    -Definir prioridade:
+        -Baixa
+        -Média
+        -Alta
+        -Crítica
 
 ## Controle de Fluxo
 Cada tarefa pode possuir os seguintes status:
 
-Backlog
-A Fazer
-Em Andamento
-Em Revisão
-Concluído
+    -A Fazer
+    -Em Progresso
+    -Concluído
 
 ## Relatórios
-Relatório geral de desempenho.
-Quantidade de tarefas por status.
-Quantidade de tarefas críticas.
-Relatório de produtividade por usuário.
+    - Relatório geral de desempenho.
+    - Quantidade de tarefas por status.
+    - Quantidade de tarefas críticas.
+    - Relatório de produtividade por usuário.
 
 # Metodologia Utilizada
 
@@ -66,10 +64,17 @@ Concluído
 
 Além disso, foram aplicadas práticas de qualidade de software, incluindo:
 
-Programação Orientada a Objetos (POO).
-Controle de versão com Git e GitHub.
-Testes automatizados com PyTest.
-Integração Contínua com GitHub Actions.
+    - Programação Orientada a Objetos (POO).
+    - Controle de versão com Git e GitHub.
+    - Testes automatizados com PyTest.
+    - Integração Contínua com GitHub Actions.
+
+# Tecnologias Utilizadas
+    - Python 3
+    - PyTest
+    - Git
+    - GitHub
+    - GitHub Actions
 
 # Como Executar o Sistema
 
@@ -119,20 +124,20 @@ Essa mudança está alinhada aos princípios das metodologias ágeis, que permit
 ## Funcionalidades Adicionadas
 Foram adicionadas as seguintes funcionalidades:
 
-Relatório geral de desempenho.
-Relatório de produtividade por usuário.
-Contagem de tarefas por status.
-Identificação de tarefas com prioridade crítica
+    - Relatório geral de desempenho.
+    - Relatório de produtividade por usuário.
+    - Contagem de tarefas por status.
+    - Identificação de tarefas com prioridade crítica
 
 ## Impacto no Projeto
 
 A alteração exigiu:
 
-Atualização do backlog do produto.
-Criação de novas tarefas de desenvolvimento.
-Atualização do quadro Kanban.
-Implementação de novos testes automatizados.
-Atualização da documentação do sistema.
+    - Atualização do backlog do produto.
+    - Criação de novas tarefas de desenvolvimento.
+    - Atualização do quadro Kanban.
+    - Implementação de novos testes automatizados.
+    - Atualização da documentação do sistema.
 
 # Autor
 
