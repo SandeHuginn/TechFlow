@@ -1,9 +1,10 @@
     # ---------------- CLASSES ----------------
 class Usuario:
-    def __init__(self, username, senha, nome):
+    def __init__(self, username, senha, nome, tipo):
         self.username = username
         self.senha = senha
         self.nome = nome
+        self.tipo = tipo
 
 
 class Tarefa:
@@ -35,15 +36,31 @@ class Sistema:
 
     def cadastrar_usuario(self):
         nome = input("Nome: ")
-        usuario = input("Usuário: ")
+        username = input("Usuário: ")
         senha = input("Senha: ")
 
-        self.usuarios.append(Usuario(usuario, senha, nome))
-        print("Usuário cadastrado com sucesso!")
+        print("\nTipos:")
+        print("1 - Administrador")
+        print("2 - Usuário Local")
 
+        opcao = input("Escolha: ")
+
+        if opcao == "1":
+            tipo = "admin"
+        else:
+            tipo = "local"
+
+        usuario = Usuario(username, senha, nome, tipo)
+
+        
+        self.usuarios.append(usuario)
+        
+        print("Usuário cadastrado com sucesso!")
+        
     def login(self):
         usuario = input("Usuário: ")
         senha = input("Senha: ")
+
 
         for u in self.usuarios:
             if u.username == usuario and u.senha == senha:
@@ -110,6 +127,11 @@ class Sistema:
     # ---------------- DELETE ----------------
 
     def excluir_tarefa(self):
+
+        if self.usuario_logado.tipo != "admin":
+            print("Acesso negado!")
+            return
+
         id_tarefa = int(input("ID da tarefa: "))
 
         for tarefa in self.tarefas:
@@ -156,28 +178,42 @@ class Sistema:
 
             print("\n===== MENU PRINCIPAL =====")
             print(f"Usuário: {self.usuario_logado.nome}")
+            print(f"Tipo: {self.usuario_logado.tipo}")
 
             print("1 - Criar tarefa")
             print("2 - Listar tarefas")
             print("3 - Editar tarefa")
-            print("4 - Excluir tarefa")
-            print("5 - Logout")
+
+            if self.usuario_logado.tipo == "admin":
+                print("4 - Excluir tarefa")
+                print("5 - Logout")
+            else:
+                print("4 - Logout")
 
             opcao = input("Escolha: ")
 
+            # CREATE
             if opcao == "1":
                 self.criar_tarefa()
 
+            # READ
             elif opcao == "2":
                 self.listar_tarefas()
 
+            # UPDATE
             elif opcao == "3":
                 self.editar_tarefa()
 
-            elif opcao == "4":
+            # DELETE (somente admin)
+            elif opcao == "4" and self.usuario_logado.tipo == "admin":
                 self.excluir_tarefa()
 
-            elif opcao == "5":
+             # LOGOUT ADMIN
+            elif opcao == "5" and self.usuario_logado.tipo == "admin":
+                self.logout()
+
+            # LOGOUT LOCAL
+            elif opcao == "4" and self.usuario_logado.tipo == "local":
                 self.logout()
 
             else:
@@ -190,7 +226,8 @@ sistema.usuarios.append(
     Usuario(
         "admin",
         "123",
-        "Administrador"
+        "Administrador",
+        "admin"
     )
 )
 
