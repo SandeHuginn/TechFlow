@@ -54,7 +54,7 @@ class Sistema:
 
         
         self.usuarios.append(usuario)
-        
+
         print("Usuário cadastrado com sucesso!")
         
     def login(self):
@@ -88,6 +88,8 @@ class Sistema:
             descricao,
             prioridade
         )
+
+        tarefa.responsavel = self.usuario_logado.username
 
         self.tarefas.append(tarefa)
         self.proximo_id += 1
@@ -219,16 +221,21 @@ class Sistema:
             else:
                 print("Opção inválida!")
 
-sistema = Sistema()
 
-# Usuário administrador padrão
-sistema.usuarios.append(
-    Usuario(
-        "admin",
-        "123",
-        "Administrador",
-        "admin"
+# ---------------- EXECUÇÃO ----------------
+
+if __name__ == "__main__":
+
+    sistema = Sistema()
+
+    # Usuário administrador padrão
+    sistema.usuarios.append(
+        Usuario(
+            "admin",
+            "123",
+            "Administrador",
+            "admin"
+        )
     )
-)
 
-sistema.menu_login()
+    sistema.menu_login()
