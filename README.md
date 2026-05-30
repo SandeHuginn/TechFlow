@@ -20,11 +20,11 @@ Utilizar Integração Contínua (CI) com GitHub Actions para validação automá
 # Funcionalidades
 
 ## Usuários
--Cadastro de usuários.
--Login e logout.
--Controle de acesso por perfil:
-    -Administrador
-    -Usuário Local
+    -Cadastro de usuários.
+    -Login e logout.
+    -Controle de acesso por perfil:
+        -Administrador
+        -Usuário Local
 
 ## Tarefas
 -Criar tarefas.
