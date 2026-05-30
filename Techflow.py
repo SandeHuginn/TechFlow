@@ -144,6 +144,75 @@ class Sistema:
 
         print("Tarefa não encontrada.")
 
+    # ---------------- RELATORIO DESEMPENHO ----------------
+    def relatorio_desempenho(self):
+
+        if self.usuario_logado.tipo != "admin":
+            print("Acesso negado!")
+            return
+
+        total_tarefas = len(self.tarefas)
+
+        concluidas = 0
+        andamento = 0
+        backlog = 0
+        revisao = 0
+        criticas = 0
+
+        for tarefa in self.tarefas:
+
+            if tarefa.status == "Concluído":
+                concluidas += 1
+
+            elif tarefa.status == "Em Andamento":
+                andamento += 1
+
+            elif tarefa.status == "Backlog":
+                backlog += 1
+
+            elif tarefa.status == "Em Revisão":
+                revisao += 1
+
+            if tarefa.prioridade.lower() == "crítica":
+                criticas += 1
+
+        print("\n===== RELATÓRIO DE DESEMPENHO =====")
+        print(f"Total de tarefas: {total_tarefas}")
+        print(f"Tarefas concluídas: {concluidas}")
+        print(f"Tarefas em andamento: {andamento}")
+        print(f"Tarefas em revisão: {revisao}")
+        print(f"Tarefas no backlog: {backlog}")
+        print(f"Tarefas críticas: {criticas}")
+
+
+    # ---------------- RELATORIO USUARIO ----------------
+    def relatorio_usuarios(self):
+
+        if self.usuario_logado.tipo != "admin":
+            print("Acesso negado!")
+            return
+
+        print("\n===== PRODUTIVIDADE POR USUÁRIO =====")
+
+        for usuario in self.usuarios:
+
+            total = 0
+            concluidas = 0
+
+            for tarefa in self.tarefas:
+
+                if tarefa.responsavel == usuario.username:
+
+                    total += 1
+
+                    if tarefa.status == "Concluído":
+                        concluidas += 1
+
+            print(f"\nUsuário: {usuario.nome}")
+            print(f"Total de tarefas: {total}")
+            print(f"Concluídas: {concluidas}")
+
+
     # ---------------- MENU LOGIN ----------------
 
     def menu_login(self):
@@ -188,7 +257,9 @@ class Sistema:
 
             if self.usuario_logado.tipo == "admin":
                 print("4 - Excluir tarefa")
-                print("5 - Logout")
+                print("5 - Relatório Geral")
+                print("6 - Relatório por Usuário")
+                print("7 - Logout")
             else:
                 print("4 - Logout")
 
@@ -210,8 +281,17 @@ class Sistema:
             elif opcao == "4" and self.usuario_logado.tipo == "admin":
                 self.excluir_tarefa()
 
-             # LOGOUT ADMIN
+            # RELATORIO GERAL
             elif opcao == "5" and self.usuario_logado.tipo == "admin":
+                self.relatorio_desempenho()    
+
+            # RELATORIO USUARIO
+            
+            elif opcao == "6" and self.usuario_logado.tipo == "admin":
+                self.relatorio_usuarios()
+
+             # LOGOUT ADMIN
+            elif opcao == "7" and self.usuario_logado.tipo == "admin":
                 self.logout()
 
             # LOGOUT LOCAL
