@@ -20,37 +20,35 @@ Utilizar Integração Contínua (CI) com GitHub Actions para validação automá
 # Funcionalidades
 
 ## Usuários
-Cadastro de usuários.
-Login e logout.
-Controle de acesso por perfil:
-    Administrador
-    Usuário Local
+-Cadastro de usuários.
+-Login e logout.
+-Controle de acesso por perfil:
+    -Administrador
+    -Usuário Local
 
 ## Tarefas
-Criar tarefas.
-Listar tarefas.
-Editar tarefas.
-Excluir tarefas (apenas administradores).
-Definir prioridade:
-    Baixa
-    Média
-    Alta
-    Crítica
+-Criar tarefas.
+-Listar tarefas.
+-Editar tarefas.
+-Excluir tarefas (apenas administradores).
+-Definir prioridade:
+    -Baixa
+    -Média
+    -Alta
+    -Crítica
 
 ## Controle de Fluxo
 Cada tarefa pode possuir os seguintes status:
 
-Backlog
-A Fazer
-Em Andamento
-Em Revisão
-Concluído
+-A Fazer
+-Em Progresso
+-Concluído
 
 ## Relatórios
-Relatório geral de desempenho.
-Quantidade de tarefas por status.
-Quantidade de tarefas críticas.
-Relatório de produtividade por usuário.
+- Relatório geral de desempenho.
+- Quantidade de tarefas por status.
+- Quantidade de tarefas críticas.
+- Relatório de produtividade por usuário.
 
 # Metodologia Utilizada
 
@@ -66,10 +64,17 @@ Concluído
 
 Além disso, foram aplicadas práticas de qualidade de software, incluindo:
 
-Programação Orientada a Objetos (POO).
-Controle de versão com Git e GitHub.
-Testes automatizados com PyTest.
-Integração Contínua com GitHub Actions.
+- Programação Orientada a Objetos (POO).
+- Controle de versão com Git e GitHub.
+- Testes automatizados com PyTest.
+- Integração Contínua com GitHub Actions.
+
+# Tecnologias Utilizadas
+Python 3
+PyTest
+Git
+GitHub
+GitHub Actions
 
 # Como Executar o Sistema
 
