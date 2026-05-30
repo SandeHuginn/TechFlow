@@ -117,3 +117,63 @@ class Sistema:
                 return
 
         print("Tarefa não encontrada.")
+
+            # ---------------- MENU ----------------
+
+    def menu(self):
+        while True:
+
+            print("\n===== SISTEMA ÁGIL =====")
+            print("1 - Cadastrar usuário")
+            print("2 - Login")
+            print("3 - Criar tarefa")
+            print("4 - Listar tarefas")
+            print("5 - Editar tarefa")
+            print("6 - Excluir tarefa")
+            print("0 - Sair")
+
+            opcao = input("Escolha: ")
+
+            if opcao == "1":
+                self.cadastrar_usuario()
+
+            elif opcao == "2":
+                self.login()
+
+            elif opcao == "3":
+                if self.usuario_logado:
+                    self.criar_tarefa()
+                else:
+                    print("Faça login primeiro!")
+
+            elif opcao == "4":
+                self.listar_tarefas()
+
+            elif opcao == "5":
+                if self.usuario_logado:
+                    self.editar_tarefa()
+                else:
+                    print("Faça login primeiro!")
+
+            elif opcao == "6":
+                if self.usuario_logado:
+                    self.excluir_tarefa()
+                else:
+                    print("Faça login primeiro!")
+
+            elif opcao == "0":
+                print("Encerrando...")
+                break
+
+            else:
+                print("Opção inválida!")
+
+
+sistema = Sistema()
+
+# Usuário padrão
+sistema.usuarios.append(
+    Usuario("admin", "123", "Administrador")
+)
+
+sistema.menu()
